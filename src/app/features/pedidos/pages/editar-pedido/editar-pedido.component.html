@@ -1,8 +1,0 @@
-@if (pedido) {
-  <form (ngSubmit)="guardar()">
-    <input [(ngModel)]="pedido.cliente.nombre" name="cliente" placeholder="Cliente" required />
-    <input [(ngModel)]="pedido.destinatario.nombre" name="destinatario" placeholder="Destinatario" required />
-    <input [(ngModel)]="pedido.fechaEntrega" name="fecha" type="date" required />
-    <button type="submit">Actualizar</button>
-  </form>
-}

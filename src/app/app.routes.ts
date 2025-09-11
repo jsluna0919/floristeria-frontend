@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
-import {ListarPedidosComponent} from './features/pedidos/pages/listar-pedidos/listar-pedidos.component';
-import {CrearPedidoComponent} from './features/pedidos/pages/crear-pedido/crear-pedido.component';
-import {EditarPedidoComponent} from './features/pedidos/pages/editar-pedido/editar-pedido.component';
+import { Home } from './features/home/home';
+import { ListarPedidos } from './features/pedidos/pages/listar-pedidos/listar-pedidos';
+import { CrearPedido } from './features/pedidos/pages/crear-pedido/crear-pedido';
+import { EditarPedido } from './features/pedidos/pages/editar-pedido/editar-pedido';
 
 export const routes: Routes = [
-  {path:'', redirectTo:'/pedidos', pathMatch:'full'},
-  {path:'/pedidos', component: ListarPedidosComponent},
-  {path:'pedidos/crear', component: CrearPedidoComponent},
-  {path:'pedidos/editar/:id', component: EditarPedidoComponent},
-  {path:'**', redirectTo: '/pedidos'}
+  {path:'', redirectTo:'/home', pathMatch:'full'},
+  {path:'home', component:Home},
+  {path:'pedidos/listar', component: ListarPedidos},
+  {path:'pedidos/crear', component: CrearPedido},
+  {path:'pedidos/editar/:id', component: EditarPedido},
+  {path:'**', redirectTo: '/home'}
 ];

@@ -1,0 +1,29 @@
+<div class="dashboard">
+  <h1>📋 Dashboard - Pedidos Pendientes</h1>
+
+  <div class="acciones">
+    <button (click)="irACrearPedido()">➕ Crear Pedido</button>
+    <button (click)="irABuscarPedidos()">🔍 Buscar Pedido</button>
+    <button (click)="irAListarPedidos()">📑 Listar Pedidos</button>
+  </div>
+
+  <h2>Pedidos Pendientes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of pedidosPendientes">
+        <td>{{ pedido.id }}</td>
+        <td>{{ pedido.cliente }}</td>
+        <td>{{ pedido.fecha }}</td>
+        <td>{{ pedido.estado }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

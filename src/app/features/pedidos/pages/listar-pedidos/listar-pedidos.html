@@ -1,0 +1,40 @@
+<h2>Lista de Pedidos</h2>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Cliente</th>
+    <th>Arreglo</th>
+    <th>Destinatario</th>
+    <th>Fecha de entrega</th>
+    <th>Estado</th>
+    <th>Fecha de creacion</th>
+    <th>Fecha de modificacion</th>
+    <th>Acciones</th>
+  </tr>
+
+  <tr *ngFor="let pedido of pedidos">
+    <td>{{ pedido.id }}</td>
+    <td>
+      {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}<br>
+      <small>{{ pedido.cliente.telefono }}</small>
+    </td>
+    <td>
+      {{ pedido.arreglo.nombre }} - {{ pedido.arreglo.precio | currency }}<br>
+      <img [src]="pedido.arreglo.imagen" alt="arreglo" width="100" />
+    </td>
+    <td>
+      {{ pedido.destinatario.nombre }}<br>
+      {{pedido.destinatario.telefono}}<br>
+      {{pedido.destinatario.ciudad}}<br>
+      {{pedido.destinatario.direccion}}<br>
+    </td>
+    <td>{{pedido.fechaEntrega}}</td>
+    <td>{{ pedido.estado }}</td> 
+    <td>{{pedido.fechaCreacion}}</td>
+    <td>{{pedido.fechaModificacion}}</td>
+    <td>
+      <button [routerLink]="['/editar', pedido.id]">Editar</button>
+      <button [routerLink]="['/eliminar', pedido.id]">Eliminar</button>
+    </td>
+  </tr>
+</table>
