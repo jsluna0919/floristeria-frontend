@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pedido } from '../../models/pedido';
 import { PedidoService } from '../../services/pedido';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-listar-pedidos',
@@ -14,10 +14,18 @@ export class ListarPedidos implements OnInit{
 
   pedidos: Pedido[] = [];
 
-  constructor(private service: PedidoService){}
+  constructor(private service: PedidoService, private router: Router){}
 
   ngOnInit(): void {
     this.service.listarPedido().subscribe(resp =>{this.pedidos = resp.data;})
+  }
+
+  irACrearPedido(){
+    this.router.navigate(['/pedidos/crear'])
+  }
+  
+  irABuscarPedidos(){
+    this.router.navigate(['/pedidos'])
   }
 
   

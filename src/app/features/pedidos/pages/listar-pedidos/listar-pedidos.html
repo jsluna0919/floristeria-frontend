@@ -1,3 +1,4 @@
+<div>
 <h2>Lista de Pedidos</h2>
 <table border="1">
   <tr>
@@ -13,7 +14,11 @@
   </tr>
 
   <tr *ngFor="let pedido of pedidos">
-    <td>{{ pedido.id }}</td>
+    <td>
+      <a [routerLink]="['/pedidos', pedido.id]" class="btn btn-info">
+        {{ pedido.id }}
+      </a>
+    </td>
     <td>
       {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}<br>
       <small>{{ pedido.cliente.telefono }}</small>
@@ -38,3 +43,9 @@
     </td>
   </tr>
 </table>
+
+<div>
+  <button (click)="irACrearPedido()">➕ Crear Pedido</button>
+  <button (click)="irABuscarPedidos()">🔍 Buscar Pedido</button>
+</div>
+</div>
