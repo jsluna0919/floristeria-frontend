@@ -18,12 +18,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let pedido of pedidosPendientes">
+      @for (pedido of pedidosPendientes; track pedido.id) {
+
+        <tr>
         <td>{{ pedido.id }}</td>
-        <td>{{ pedido.cliente }}</td>
-        <td>{{ pedido.fecha }}</td>
+        <td>{{ pedido.cliente.nombre }}</td>
+        <td>{{ pedido.fechaEntrega }}</td>
         <td>{{ pedido.estado }}</td>
       </tr>
+
+      }
+      
     </tbody>
   </table>
 </div>

@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pedido } from '../models/pedido';
 import { Observable } from 'rxjs';
+import { ApiResponse } from '../../../shared/models/api-response';
+import { CrearPedidoDTO } from '../models/crear-pedido';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,24 +15,24 @@ export class PedidoService {
 
   constructor(private http: HttpClient){}
 
-  crearPedido(pedido: Pedido): Observable<Pedido>{
-    return this.http.post<Pedido>(`this.apiUrl/crear`, pedido)
+  crearPedido(pedido: CrearPedidoDTO): Observable<ApiResponse<CrearPedidoDTO>>{
+    return this.http.post<ApiResponse<CrearPedidoDTO>>(`${this.apiUrl}/crear`, pedido)
   }
 
-  obtenerPedido(id: number): Observable<Pedido>{
-    return this.http.get<Pedido>(`${this.apiUrl}/${id}`)
+  obtenerPedido(id: number): Observable<ApiResponse<Pedido>>{
+    return this.http.get<ApiResponse<Pedido>>(`${this.apiUrl}/${id}`)
   }
 
-  listarPedido(): Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}/listar`)
+  listarPedido(): Observable<ApiResponse<Pedido[]>>{
+    return this.http.get<ApiResponse<Pedido[]>>(`${this.apiUrl}/listar`)
   }
 
-  editarPedido(id: number, pedido: Pedido): Observable<Pedido>{
-    return this.http.put<Pedido>(`${this.apiUrl}/modificar/${id}`, pedido);
+  editarPedido(id: number, pedido: Pedido): Observable<ApiResponse<Pedido>>{
+    return this.http.put<ApiResponse<Pedido>>(`${this.apiUrl}/modificar/${id}`, pedido);
   }
 
-  eliminarPedido(id: number): Observable<void>{
-    return this.http.delete<void>(`${this.apiUrl}/eliminar/${id}`)
+  eliminarPedido(id: number): Observable<ApiResponse<null>>{
+    return this.http.delete<ApiResponse<null>>(`${this.apiUrl}/eliminar/${id}`)
   }
   
 }

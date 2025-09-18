@@ -1,1 +1,142 @@
-<p>crear-pedido works!</p>
+<h2>Crear Pedido</h2>
+
+<form (ngSubmit)="guardarPedido()" #pedidoForm="ngForm" class="pedido-form">
+
+  <!-- Cliente -->
+  <h3>Cliente</h3>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.cliente.nombre" name="clienteNombre" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Apellido</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.cliente.apellido" name="clienteApellido" required />
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline" class="full-width">
+  <mat-label>Tipo de documento</mat-label>
+  <mat-select [(ngModel)]="nuevoPedido.cliente.tipoDocumento" name="clienteTipoDocumento" required>
+    @for (tipo of tipoDocumento; track $index) {
+      <mat-option [value]="tipo">
+        {{ tipo }}
+      </mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Numero de documento</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.cliente.numeroDocumento" name="clienteDocumento" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Teléfono</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.cliente.telefono" name="clienteTelefono" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" [(ngModel)]="nuevoPedido.cliente.email" name="clienteEmail" required />
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Dirección</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.cliente.direccion" name="clienteDireccion" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Ciudad</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.cliente.ciudad" name="clienteCiudad" required />
+  </mat-form-field>
+
+  <!-- Arreglo -->
+  <h3>Arreglo</h3>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.arreglo.nombre" name="arregloNombre" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput [(ngModel)]="nuevoPedido.arreglo.descripcion" name="arregloDescripcion" required></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Anexos</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.arreglo.anexos" name="arregloAnexos" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Precio</mat-label>
+    <input matInput type="number" [(ngModel)]="nuevoPedido.arreglo.precio" name="arregloPrecio" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Imagen</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.arreglo.imagen" name="arregloImagen" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Mensaje</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.arreglo.mensaje" name="arregloMensaje" />
+  </mat-form-field>
+
+  <!-- Destinatario -->
+  <h3>Destinatario</h3>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.destinatario.nombre" name="destinatarioNombre" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Teléfono</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.destinatario.telefono" name="destinatarioTelefono" required />
+  </mat-form-field>
+
+
+  <!-- Información de envío -->
+  <h3>Información de Envío</h3>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Ciudad de Envío</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.ciudadEnvio" name="ciudadEnvio" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Dirección de Envío</mat-label>
+    <input matInput [(ngModel)]="nuevoPedido.direccionEnvio" name="direccionEnvio" required />
+  </mat-form-field>
+
+
+    <!-- Fecha -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Fecha de entrega</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="nuevoPedido.fechaEntrega" name="fechaEntrega">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Hora -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Hora de entrega</mat-label>
+    <input matInput type="time" [(ngModel)]="horaEntrega" name="horaEntrega">
+  </mat-form-field>
+
+
+  <!-- Forma de Pago -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Forma de Pago</mat-label>
+    <mat-select [(ngModel)]="nuevoPedido.formaPago" name="formaPago" required>
+    @for (forma of formasPago; track $index) {
+      <mat-option [value]="forma">
+          {{ forma }}
+      </mat-option>
+    }
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Botón -->
+  <button mat-raised-button color="primary" type="submit">Guardar Pedido</button>
+</form>

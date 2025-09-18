@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Pedido } from '../pedidos/models/pedido';
+import { PedidoService } from '../pedidos/services/pedido';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +10,28 @@ import { Router } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
-export class Home {
+export class Home implements OnInit{
 
-  pedidosPendientes = [
-    { id: 1, cliente: 'Carlos Gómez', fecha: '2025-09-10', estado: 'Pendiente' },
-    { id: 2, cliente: 'Sofía Pérez', fecha: '2025-09-11', estado: 'Pendiente' },
-    { id: 3, cliente: 'Ana Torres', fecha: '2025-09-12', estado: 'Pendiente' }
-  ]
+  pedidos: Pedido[] = []
+  pedidosPendientes: Pedido[] = []
 
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private service: PedidoService
+  
+  ){}
+
+  ngOnInit(): void {
+      this.service.listarPedido().subscribe(res => {
+        this.pedidos = res.data;
+        //1. Filtrar solo pedidos pendientes
+        this.pedidosPendientes = this.pedidos.filter(p => p.estado === "PENDIENTE");
+        //2. Ordenar por fecha de entrega ascendente
+        this.pedidosPendientes.sort((a, b) =>{
+          return new Date(a.fechaEntrega).getTime() - new Date(b.fechaEntrega).getTime()
+        })
+      })
+  }
 
   irACrearPedido(){
     this.router.navigate(['/pedidos/crear'])

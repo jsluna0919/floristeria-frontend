@@ -1,8 +1,8 @@
 export interface Destinatario {
 
-    id?: number
+    id: number
     nombre: string
     telefono: string
-    ciudad: string
-    direccion: string
+    fechaCreacion: string
+    fechaModificacion: string
 }

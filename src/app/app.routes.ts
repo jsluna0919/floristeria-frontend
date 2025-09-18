@@ -12,5 +12,6 @@ export const routes: Routes = [
   {path:'pedidos/crear', component: CrearPedido},
   {path:'pedidos/editar/:id', component: EditarPedido},
   {path: 'pedidos/:id', component: DetallePedido},
+  {path: 'pedidos/modificar/:id', component: EditarPedido},
   {path:'**', redirectTo: '/home'}
 ];

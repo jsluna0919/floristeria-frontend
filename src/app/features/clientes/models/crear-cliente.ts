@@ -1,6 +1,5 @@
-export interface Cliente {
+export interface CrearClienteDTO {
     
-    id?: number
     tipoDocumento: string
     numeroDocumento: string
     nombre: string
@@ -9,6 +8,4 @@ export interface Cliente {
     email: string
     ciudad: string
     direccion: string
-    fechaCreacion: string
-    fechaModificacion: string
 }

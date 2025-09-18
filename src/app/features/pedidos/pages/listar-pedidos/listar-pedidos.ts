@@ -17,7 +17,7 @@ export class ListarPedidos implements OnInit{
   constructor(private service: PedidoService, private router: Router){}
 
   ngOnInit(): void {
-    this.service.listarPedido().subscribe(resp =>{this.pedidos = resp.data;})
+    this.service.listarPedido().subscribe(resp =>{this.pedidos = resp.data})
   }
 
   irACrearPedido(){
@@ -27,7 +27,5 @@ export class ListarPedidos implements OnInit{
   irABuscarPedidos(){
     this.router.navigate(['/pedidos'])
   }
-
-  
 
 }

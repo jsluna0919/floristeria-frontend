@@ -1,12 +1,10 @@
-export interface Arreglo {
+export interface CrearArregloDTO {
 
-    id: number
     nombre: string
     descripcion: string
     anexos: string
     precio: number
     imagen: string
     mensaje: string
-    fechaCreacion: string
-    fechaModificacion: string
+
 }

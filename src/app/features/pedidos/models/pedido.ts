@@ -4,12 +4,15 @@ import { Destinatario } from "../../destinatarios/models/destinatario";
 
 export interface Pedido {
 
-    id?: number
+    id: number
     cliente: Cliente
     arreglo: Arreglo
     destinatario: Destinatario
-    fechaEntrega: String
+    ciudadEnvio: string
+    direccionEnvio: string
+    fechaEntrega: string
+    formaPago: string
     estado: string
-    fechaCreacion: string
-    fechaModificacion: string
+    fechaCreacion: Date
+    fechaModificacion: Date | null
 }

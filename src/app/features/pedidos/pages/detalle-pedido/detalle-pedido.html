@@ -1,35 +1,43 @@
 @if (pedido) {
-  <section>
-    <h2>Detalle del Pedido #{{ pedido.id }}</h2>
+  <div>
+      <section>
+      <h2>Detalle del Pedido #{{ pedido.id }}</h2>
 
-    <h3>Cliente</h3>
-    <p><b>Nombre:</b> {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
-    <p><b>Email:</b> {{ pedido.cliente.email }}</p>
-    <p><b>Teléfono:</b> {{ pedido.cliente.telefono }}</p>
-    <p><b>Dirección:</b> {{ pedido.cliente.direccion }}</p>
-    <p><b>Ciudad:</b> {{ pedido.cliente.ciudad }}</p>
+      <h3>Cliente</h3>
+      <p><b>Nombre:</b> {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
+      <p><b>Email:</b> {{ pedido.cliente.email }}</p>
+      <p><b>Teléfono:</b> {{ pedido.cliente.telefono }}</p>
+      <p><b>Dirección:</b> {{ pedido.cliente.direccion }}</p>
+      <p><b>Ciudad:</b> {{ pedido.cliente.ciudad }}</p>
 
-    <h3>Arreglo</h3>
-    <p><b>Nombre:</b> {{ pedido.arreglo.nombre }}</p>
-    <p><b>Descripción:</b> {{ pedido.arreglo.descripcion }}</p>
-    <p><b>Anexos:</b> {{ pedido.arreglo.anexos }}</p>
-    <p><b>Precio:</b> {{ pedido.arreglo.precio | currency:'COP' }}</p>
-    <p><b>Mensaje:</b> {{ pedido.arreglo.mensaje }}</p>
-    <p><b>Fecha creación:</b> {{ pedido.arreglo.fechaCreacion | date:'short' }}</p>
+      <h3>Arreglo</h3>
+      <p><b>Nombre:</b> {{ pedido.arreglo.nombre }}</p>
+      <p><b>Descripción:</b> {{ pedido.arreglo.descripcion }}</p>
+      <p><b>Anexos:</b> {{ pedido.arreglo.anexos }}</p>
+      <p><b>Precio:</b> {{ pedido.arreglo.precio | currency:'COP' }}</p>
+      <p><b>Mensaje:</b> {{ pedido.arreglo.mensaje }}</p>
 
-    <h3>Destinatario</h3>
-    <p><b>Nombre:</b> {{ pedido.destinatario.nombre }}</p>
-    <p><b>Teléfono:</b> {{ pedido.destinatario.telefono }}</p>
+      <h3>Destinatario</h3>
+      <p><b>Nombre:</b> {{ pedido.destinatario.nombre }}</p>
+      <p><b>Teléfono:</b> {{ pedido.destinatario.telefono }}</p>
 
-    <h3>Información de envío</h3>
-    <p><b>Ciudad de envío:</b> {{ pedido.ciudadEnvio }}</p>
-    <p><b>Dirección de envío:</b> {{ pedido.direccionEnvio }}</p>
-    <p><b>Fecha entrega:</b> {{ pedido.fechaEntrega }}</p>
-    <p><b>Forma de pago:</b> {{ pedido.formaPago }}</p>
-    <p><b>Estado:</b> {{ pedido.estado }}</p>
+      <h3>Información de envío</h3>
+      <p><b>Ciudad de envío:</b> {{ pedido.ciudadEnvio }}</p>
+      <p><b>Dirección de envío:</b> {{ pedido.direccionEnvio }}</p>
+      <p><b>Fecha entrega:</b> {{ pedido.fechaEntrega }}</p>
+      <p><b>Forma de pago:</b> {{ pedido.formaPago }}</p>
+      <p><b>Estado:</b> {{ pedido.estado }}</p>
 
-    <h3>Fechas del pedido</h3>
-    <p><b>Fecha creación:</b> {{ pedido.fechaCreacion | date:'short' }}</p>
-    <p><b>Fecha modificación:</b> {{ pedido.fechaModificacion || 'Sin cambios' }}</p>
-  </section>
+      <h3>Fechas del pedido</h3>
+      <p><b>Fecha creación:</b> {{ pedido.fechaCreacion | date:'short' }}</p>
+      <p><b>Fecha modificación:</b> {{ pedido.fechaModificacion || 'Sin cambios' }}</p>
+    </section>
+
+    <div class="acciones">
+    <button (click)="irAtras()">Atras</button>
+    <button (click)="irAModificarPedido(pedido.id)">Modificar</button>
+  </div>
+
+  </div>
+  
 }

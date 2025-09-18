@@ -30,13 +30,11 @@
     <td>
       {{ pedido.destinatario.nombre }}<br>
       {{pedido.destinatario.telefono}}<br>
-      {{pedido.destinatario.ciudad}}<br>
-      {{pedido.destinatario.direccion}}<br>
     </td>
     <td>{{pedido.fechaEntrega}}</td>
     <td>{{ pedido.estado }}</td> 
-    <td>{{pedido.fechaCreacion}}</td>
-    <td>{{pedido.fechaModificacion}}</td>
+    <td>{{pedido.fechaCreacion | date:'dd/MM/yyyy HH:mm'}}</td>
+    <td>{{pedido.fechaModificacion | date:'dd/MM/yyyy HH:mm'}}</td>
     <td>
       <button [routerLink]="['/editar', pedido.id]">Editar</button>
       <button [routerLink]="['/eliminar', pedido.id]">Eliminar</button>
