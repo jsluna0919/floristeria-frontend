@@ -13,7 +13,9 @@
     <th>Acciones</th>
   </tr>
 
-  <tr *ngFor="let pedido of pedidos">
+  @for (pedido of pedidos; track $index) {
+
+    <tr>
     <td>
       <a [routerLink]="['/pedidos', pedido.id]" class="btn btn-info">
         {{ pedido.id }}
@@ -33,13 +35,18 @@
     </td>
     <td>{{pedido.fechaEntrega}}</td>
     <td>{{ pedido.estado }}</td> 
-    <td>{{pedido.fechaCreacion | date:'dd/MM/yyyy HH:mm'}}</td>
-    <td>{{pedido.fechaModificacion | date:'dd/MM/yyyy HH:mm'}}</td>
+    <td>{{pedido.fechaCreacion | date:'short'}}</td>
+    <td>@if (pedido.fechaModificacion) {
+      {{pedido.fechaModificacion | date:'short'}}  
+    }@else { Sin cambios}</td>
     <td>
       <button [routerLink]="['/editar', pedido.id]">Editar</button>
       <button [routerLink]="['/eliminar', pedido.id]">Eliminar</button>
     </td>
   </tr>
+  
+  }
+  
 </table>
 
 <div>

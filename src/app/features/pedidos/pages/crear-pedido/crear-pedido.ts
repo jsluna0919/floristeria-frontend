@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-crear-pedido',
@@ -57,7 +59,7 @@ export class CrearPedido {
     formaPago: ''
   };
 
-  constructor(private service: PedidoService){}
+  constructor(private service: PedidoService, private router: Router){}
 
   guardarPedido(){
     const fecha = new Date(this.nuevoPedido.fechaEntrega);
@@ -76,6 +78,12 @@ export class CrearPedido {
         alert('❌ Error al crear el pedido');
       }
     })
+
+    this.router.navigate(['/home'])
+  }
+
+  volver(){
+    this.router.navigate(['/home'])
   }
 
 }

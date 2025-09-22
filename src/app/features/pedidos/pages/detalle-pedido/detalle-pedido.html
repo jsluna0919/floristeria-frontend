@@ -24,13 +24,17 @@
       <h3>Información de envío</h3>
       <p><b>Ciudad de envío:</b> {{ pedido.ciudadEnvio }}</p>
       <p><b>Dirección de envío:</b> {{ pedido.direccionEnvio }}</p>
-      <p><b>Fecha entrega:</b> {{ pedido.fechaEntrega }}</p>
+      <p><b>Fecha entrega:</b> {{ pedido.fechaEntrega  }}</p>
       <p><b>Forma de pago:</b> {{ pedido.formaPago }}</p>
       <p><b>Estado:</b> {{ pedido.estado }}</p>
 
       <h3>Fechas del pedido</h3>
       <p><b>Fecha creación:</b> {{ pedido.fechaCreacion | date:'short' }}</p>
-      <p><b>Fecha modificación:</b> {{ pedido.fechaModificacion || 'Sin cambios' }}</p>
+      <p><b>Fecha modificación:</b>
+        @if (pedido.fechaModificacion) {
+          {{pedido.fechaModificacion | date:'short'}}
+        }@else { Sin cambios }
+      </p>
     </section>
 
     <div class="acciones">
