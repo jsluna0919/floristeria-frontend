@@ -49,10 +49,24 @@ export class CrearPedido {
     'OTRO'
   ]
 
+  motivoPedido = [
+    'CUMPLEAÑOS',
+    'ANIVERSARIO',
+    'SAN_VALENTIN',
+    'DESPEDIDA',
+    'OTRO'
+  ]
+
   nuevoPedido: CrearPedidoDTO = {
     cliente: { tipoDocumento: '', numeroDocumento: '', nombre: '', apellido: '', telefono: '', email: '', ciudad: '',  direccion: '' },
-    arreglo: { nombre: '', descripcion: '', anexos: '', precio: 0, imagen: '', mensaje: '' },
     destinatario: { nombre: '', telefono: '' },
+    motivoPedido: '',
+    arregloFloral: '',
+    descripcion: '',
+    anexos: '',
+    precio: 0,
+    imagen: '',
+    mensaje: '',
     ciudadEnvio: '',
     direccionEnvio: '',
     fechaEntrega: '',
@@ -77,8 +91,7 @@ export class CrearPedido {
         console.error(err);
         alert('❌ Error al crear el pedido');
       }
-    })
-
+    });
     this.router.navigate(['/home'])
   }
 

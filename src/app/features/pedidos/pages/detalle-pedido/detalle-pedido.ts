@@ -30,6 +30,6 @@ export class DetallePedido implements OnInit{
   }
 
   irAModificarPedido(id: number){
-    this.router.navigate(['/pedidos/modificar/{id}'])
+    this.router.navigate(['/pedidos/modificar', id])
   }
 }

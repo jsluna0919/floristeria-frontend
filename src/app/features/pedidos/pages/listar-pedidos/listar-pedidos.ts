@@ -28,4 +28,8 @@ export class ListarPedidos implements OnInit{
     this.router.navigate(['/pedidos'])
   }
 
+  irAPedido(id: number){
+    this.router.navigate(['/pedidos', id])
+  }
+
 }

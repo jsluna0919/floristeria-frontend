@@ -18,13 +18,13 @@
   <mat-form-field appearance="outline" class="full-width">
   <mat-label>Tipo de documento</mat-label>
   <mat-select [(ngModel)]="pedido.cliente.tipoDocumento" name="clienteTipoDocumento" required>
-    @for (tipo of pedido.cliente.tipoDocumento; track $index) {
+    @for (tipo of tipoDocumento; track $index) {
       <mat-option [value]="tipo">
         {{ tipo }}
       </mat-option>
     }
   </mat-select>
-</mat-form-field>
+  </mat-form-field>
 
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Numero de documento</mat-label>
@@ -129,7 +129,7 @@
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Forma de Pago</mat-label>
     <mat-select [(ngModel)]="pedido.formaPago" name="formaPago" required>
-    @for (forma of pedido.formasPago; track $index) {
+    @for (forma of formasPago; track $index) {
       <mat-option [value]="forma">
           {{ forma }}
       </mat-option>

@@ -1,56 +1,62 @@
-<div>
-<h2>Lista de Pedidos</h2>
-<table border="1">
-  <tr>
-    <th>ID</th>
-    <th>Cliente</th>
-    <th>Arreglo</th>
-    <th>Destinatario</th>
-    <th>Fecha de entrega</th>
-    <th>Estado</th>
-    <th>Fecha de creacion</th>
-    <th>Fecha de modificacion</th>
-    <th>Acciones</th>
-  </tr>
+<div class="lista">
+  <h1>📋 LISTA PEDIDOS</h1>
+  <div class="acciones">
+    <button (click)="irACrearPedido()">➕ Crear Pedido</button>
+    <button (click)="irABuscarPedidos()">🔍 Buscar Pedido</button>
+  </div>
 
-  @for (pedido of pedidos; track $index) {
-
-    <tr>
-    <td>
-      <a [routerLink]="['/pedidos', pedido.id]" class="btn btn-info">
-        {{ pedido.id }}
-      </a>
-    </td>
-    <td>
-      {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}<br>
-      <small>{{ pedido.cliente.telefono }}</small>
-    </td>
-    <td>
-      {{ pedido.arreglo.nombre }} - {{ pedido.arreglo.precio | currency }}<br>
-      <img [src]="pedido.arreglo.imagen" alt="arreglo" width="100" />
-    </td>
-    <td>
-      {{ pedido.destinatario.nombre }}<br>
-      {{pedido.destinatario.telefono}}<br>
-    </td>
-    <td>{{pedido.fechaEntrega}}</td>
-    <td>{{ pedido.estado }}</td> 
-    <td>{{pedido.fechaCreacion | date:'short'}}</td>
-    <td>@if (pedido.fechaModificacion) {
-      {{pedido.fechaModificacion | date:'short'}}  
-    }@else { Sin cambios}</td>
-    <td>
-      <button [routerLink]="['/editar', pedido.id]">Editar</button>
-      <button [routerLink]="['/eliminar', pedido.id]">Eliminar</button>
-    </td>
-  </tr>
   
-  }
-  
-</table>
+  <div class="table-wrap">
+    <table>
+    <thead>
+      <tr>
+        <th >ID</th>
+        <th>Cliente</th>
+        <th>Destinatario</th>
+        <th>Arreglo Floral</th>
+        <th>Estado</th>
+        <th>Fecha de Creacion</th>
+        <th>Fecha de Modificacion</th>
+      </tr>
+    </thead>
 
-<div>
-  <button (click)="irACrearPedido()">➕ Crear Pedido</button>
-  <button (click)="irABuscarPedidos()">🔍 Buscar Pedido</button>
-</div>
+    <tbody>
+      @for (pedido of pedidos; track $index) {
+        <tr>
+          <td (click)="irAPedido(pedido.id)" class="row-link">
+            {{pedido.id}}
+          </td>
+
+          <td (click)="irAPedido(pedido.id)" class="row-link">
+            {{pedido.cliente.nombre}}
+          </td>
+
+          <td (click)="irAPedido(pedido.id)" class="row-link">
+            {{pedido.destinatario.nombre}}
+          </td>
+
+          <td (click)="irAPedido(pedido.id)" class="row-link">
+            {{pedido.arregloFloral}}
+          </td>
+
+          <td (click)="irAPedido(pedido.id)" class="row-link">
+            {{pedido.estado}}
+          </td>
+
+          <td (click)="irAPedido(pedido.id)" class="row-link">
+            {{pedido.fechaCreacion | date:'short'}}
+          </td>
+
+          <td (click)="irAPedido(pedido.id)" class="row-link">
+             @if(pedido.fechaModificacion){
+            {{pedido.fechaModificacion | date:'short'}}
+          }@else {Sin cambios}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  </div>
+
 </div>

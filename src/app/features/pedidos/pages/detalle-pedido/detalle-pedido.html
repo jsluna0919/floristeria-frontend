@@ -4,18 +4,19 @@
       <h2>Detalle del Pedido #{{ pedido.id }}</h2>
 
       <h3>Cliente</h3>
-      <p><b>Nombre:</b> {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
+      <p><b>Nombre: </b> {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
+      <p><b>Documento: </b>{{pedido.cliente.tipoDocumento}} {{pedido.cliente.numeroDocumento}}</p>
       <p><b>Email:</b> {{ pedido.cliente.email }}</p>
       <p><b>Teléfono:</b> {{ pedido.cliente.telefono }}</p>
       <p><b>Dirección:</b> {{ pedido.cliente.direccion }}</p>
       <p><b>Ciudad:</b> {{ pedido.cliente.ciudad }}</p>
 
       <h3>Arreglo</h3>
-      <p><b>Nombre:</b> {{ pedido.arreglo.nombre }}</p>
-      <p><b>Descripción:</b> {{ pedido.arreglo.descripcion }}</p>
-      <p><b>Anexos:</b> {{ pedido.arreglo.anexos }}</p>
-      <p><b>Precio:</b> {{ pedido.arreglo.precio | currency:'COP' }}</p>
-      <p><b>Mensaje:</b> {{ pedido.arreglo.mensaje }}</p>
+      <p><b>Nombre:</b> {{ pedido.arregloFloral }}</p> 
+      <p><b>Descripción:</b> {{ pedido.descripcion }}</p>
+      <p><b>Anexos:</b> {{ pedido.anexos }}</p>
+      <p><b>Precio:</b> {{ pedido.precio | currency:'COP' }}</p>
+      <p><b>Mensaje:</b> {{ pedido.mensaje }}</p>
 
       <h3>Destinatario</h3>
       <p><b>Nombre:</b> {{ pedido.destinatario.nombre }}</p>
@@ -24,7 +25,7 @@
       <h3>Información de envío</h3>
       <p><b>Ciudad de envío:</b> {{ pedido.ciudadEnvio }}</p>
       <p><b>Dirección de envío:</b> {{ pedido.direccionEnvio }}</p>
-      <p><b>Fecha entrega:</b> {{ pedido.fechaEntrega  }}</p>
+      <p><b>Fecha entrega:</b> {{ pedido.fechaEntrega | date:'short' }}</p>
       <p><b>Forma de pago:</b> {{ pedido.formaPago }}</p>
       <p><b>Estado:</b> {{ pedido.estado }}</p>
 

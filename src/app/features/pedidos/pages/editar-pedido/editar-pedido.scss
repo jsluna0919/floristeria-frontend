@@ -1,0 +1,102 @@
+// === Estilos generales del formulario ===
+.pedido-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; // espacio entre campos
+  max-width: 800px;
+  margin: 0 auto; // centra el formulario
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #3f51b5; // primary Angular Material
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #333;
+    border-left: 4px solid #3f51b5;
+    padding-left: 0.5rem;
+  }
+
+  // Campos de Angular Material
+  .mat-form-field {
+    width: 100%;
+    background: #fafafa;
+    border-radius: 8px;
+
+    .mat-form-field-wrapper {
+      padding: 0.3rem 0.6rem;
+    }
+
+    .mat-form-field-outline {
+      border-radius: 8px;
+    }
+  }
+
+  // Input de texto
+  input,
+  textarea {
+    font-size: 0.95rem;
+  }
+
+  textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  // Botón Guardar
+  button[type="submit"] {
+    align-self: center;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #b86577; // tono más oscuro del primary
+      transform: scale(1.05);
+    }
+  }
+
+  // Botón Atras
+  button[type="button"] {
+    align-self: center;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #b86577; // tono más oscuro del primary
+      transform: scale(1.05);
+    }
+  }
+}
+
+// === Responsive ===
+@media (max-width: 600px) {
+  .pedido-form {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+    }
+  }
+}
