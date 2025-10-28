@@ -1,34 +1,48 @@
-<div class="dashboard">
-  <h1>📋 Dashboard - Pedidos Pendientes</h1>
+<div class="main">
 
   <div class="acciones">
-    <button (click)="irACrearPedido()">➕ Crear Pedido</button>
-    <button (click)="irAListarPedidos()">📑 Listar Pedidos</button>
-    <button (click)="irABuscarPedidos()">🔍 Buscar Pedido</button>
+
+    <h1>📋 Pedidos Pendientes</h1>
+
+    <app-button
+    label="Crear Pedido"
+    actionType="crearPedido"
+    (buttonClick)="handleButtonClick($event)"></app-button>
+
+    <app-button
+    label="Listar Pedidos"
+    actionType="listarPedidos"
+    (buttonClick)="handleButtonClick($event)"></app-button>
+
+    <app-button
+    label="Listar Clientes"
+    actionType="listarClientes"
+    (buttonClick)="handleButtonClick($event)"></app-button>
   </div>
 
-  <h2>Pedidos Pendientes</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Cliente</th>
-        <th>Fecha de entrega</th>
-        <th>Estado</th>
-      </tr>
-    </thead>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Fecha de entrega</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+
     <tbody>
       @for (pedido of pedidosPendientes; track pedido.id) {
-
-        <tr>
-        <td>{{ pedido.id }}</td>
-        <td>{{ pedido.cliente.nombre }}</td>
-        <td>{{ pedido.fechaEntrega | date:'short'}}</td>
-        <td>{{ pedido.estado }}</td>
-      </tr>
-
+        <tr (click)="handleButtonClick('irAPedido', pedido.id)" class="row-link">
+          <td>{{ pedido.id }}</td>
+          <td>{{ pedido.cliente.nombre }}</td>
+          <td>{{ pedido.fechaEntrega | date:'short'}}</td>
+          <td>{{ pedido.estado }}</td>
+        </tr>
       }
-      
+    
     </tbody>
   </table>
+  </div>
+
 </div>

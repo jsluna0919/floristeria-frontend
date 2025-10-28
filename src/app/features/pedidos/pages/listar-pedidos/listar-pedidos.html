@@ -1,6 +1,8 @@
 <div class="lista">
-  <h1>📋 LISTA PEDIDOS</h1>
+  
   <div class="acciones">
+    <h1>📋 LISTADO DE PEDIDOS</h1>
+    <button (click)="irAInicio()">🏠 Inicio</button>
     <button (click)="irACrearPedido()">➕ Crear Pedido</button>
     <button (click)="irABuscarPedidos()">🔍 Buscar Pedido</button>
   </div>
@@ -16,42 +18,25 @@
         <th>Arreglo Floral</th>
         <th>Estado</th>
         <th>Fecha de Creacion</th>
-        <th>Fecha de Modificacion</th>
       </tr>
     </thead>
 
     <tbody>
       @for (pedido of pedidos; track $index) {
-        <tr>
-          <td (click)="irAPedido(pedido.id)" class="row-link">
+        <tr (click)="irAPedido(pedido.id)" class="row-link">
+          <td>
             {{pedido.id}}
           </td>
 
-          <td (click)="irAPedido(pedido.id)" class="row-link">
-            {{pedido.cliente.nombre}}
-          </td>
+          <td> {{pedido.cliente.nombre}} </td>
 
-          <td (click)="irAPedido(pedido.id)" class="row-link">
-            {{pedido.destinatario.nombre}}
-          </td>
+          <td> {{pedido.destinatario.nombre}} </td>
 
-          <td (click)="irAPedido(pedido.id)" class="row-link">
-            {{pedido.arregloFloral}}
-          </td>
+          <td> {{pedido.arregloFloral}} </td>
 
-          <td (click)="irAPedido(pedido.id)" class="row-link">
-            {{pedido.estado}}
-          </td>
+          <td> {{pedido.estado}} </td>
 
-          <td (click)="irAPedido(pedido.id)" class="row-link">
-            {{pedido.fechaCreacion | date:'short'}}
-          </td>
-
-          <td (click)="irAPedido(pedido.id)" class="row-link">
-             @if(pedido.fechaModificacion){
-            {{pedido.fechaModificacion | date:'short'}}
-          }@else {Sin cambios}
-          </td>
+          <td> {{pedido.fechaCreacion | date:'short'}} </td>
         </tr>
       }
     </tbody>

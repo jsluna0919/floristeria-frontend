@@ -1,6 +1,6 @@
-<h2>Crear Pedido</h2>
-
 <form (ngSubmit)="guardarPedido()" #pedidoForm="ngForm" class="pedido-form">
+
+  <h2>Crear Pedido</h2>
 
   <!-- Cliente -->
   <h3>Cliente</h3>
@@ -69,7 +69,7 @@
   
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Motivo Pedido</mat-label>
-    <mat-select [(ngModel)]="nuevoPedido.formaPago" name="formaPago" required>
+    <mat-select [(ngModel)]="nuevoPedido.motivoPedido" name="motivoPedido" required>
     @for (motivo of motivoPedido; track $index) {
       <mat-option [value]="motivo">
           {{ motivo }}
@@ -155,3 +155,4 @@
    </div>
   
 </form>
+

@@ -32,4 +32,8 @@ export class ListarPedidos implements OnInit{
     this.router.navigate(['/pedidos', id])
   }
 
+  irAInicio(){
+    this.router.navigate([''])
+  }
+
 }

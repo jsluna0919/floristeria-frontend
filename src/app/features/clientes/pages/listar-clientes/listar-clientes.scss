@@ -1,0 +1,75 @@
+/* Layout general: barra fija + zona con scroll */
+.lista {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 0rem 2%;
+}
+
+/* Barra de acciones “pegada” arriba */
+.acciones {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff; /* Asegura que el fondo sea blanco al pegar */
+
+  button {
+      margin-right: 10px;
+      padding: 8px 16px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: #2980b9;
+      }
+    }
+}
+
+.acciones h1{
+  margin: .75rem;
+}
+
+/* Contenedor que SÍ scrollea */
+.table-wrap {
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: .5rem;
+  padding: 0 0;
+}
+
+/* Tabla y cabecera “sticky” */
+table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  position: sticky;
+  top: 0;                      /* se queda fija dentro de .table-wrap */
+  background: #fff;
+  z-index: 5;
+  box-shadow: 0 1px 0 #e5e7eb; /* línea inferior al header */
+  
+}
+
+th, td {
+  padding: .6rem .8rem;
+  border-bottom: 1px solid #f1f5f9;
+  text-align: left;
+}
+
+/* Opcional: limita alto si prefieres % de pantalla */
+.table-wrap {max-height: 100%;}
+.row-link { cursor: pointer; }
+.row-link:hover { background: #2980b9; }

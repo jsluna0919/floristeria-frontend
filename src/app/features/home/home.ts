@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pedido } from '../pedidos/models/pedido';
 import { PedidoService } from '../pedidos/services/pedido';
+import { Button } from "../../shared/button/button";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, Button],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
@@ -33,15 +34,24 @@ export class Home implements OnInit{
       })
   }
 
-  irACrearPedido(){
-    this.router.navigate(['/pedidos/crear'])
-  }
+  handleButtonClick(action: string, id?:any): void{
+    switch(action){
 
-  irAListarPedidos(){
-    this.router.navigate(['/pedidos/listar'])
-  }
-  
-  irABuscarPedidos(){
-    this.router.navigate(['/pedidos'])
+      case 'listarPedidos':
+        this.router.navigate(['/pedidos/listar'])
+        break
+
+      case 'crearPedido':
+        this.router.navigate(['pedidos/crear'])
+        break
+
+      case 'listarClientes':
+        this.router.navigate(['/clientes/listar'])
+        break
+      
+      case 'irAPedido':
+        this.router.navigate(['/pedidos', id])
+    }
+
   }
 }

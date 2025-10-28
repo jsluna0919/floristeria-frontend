@@ -9,6 +9,6 @@ export interface Cliente {
     email: string
     ciudad: string
     direccion: string
-    fechaCreacion: string
-    fechaModificacion: string
+    fechaCreacion: Date
+    fechaModificacion: Date | null
 }

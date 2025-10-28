@@ -1,7 +1,7 @@
 @if (pedido) {
   <div>
       <section>
-      <h2>Detalle del Pedido #{{ pedido.id }}</h2>
+      <h2>Pedido #{{ pedido.id }}</h2>
 
       <h3>Cliente</h3>
       <p><b>Nombre: </b> {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
@@ -11,7 +11,7 @@
       <p><b>Dirección:</b> {{ pedido.cliente.direccion }}</p>
       <p><b>Ciudad:</b> {{ pedido.cliente.ciudad }}</p>
 
-      <h3>Arreglo</h3>
+      <h3>Arreglo Floral</h3>
       <p><b>Nombre:</b> {{ pedido.arregloFloral }}</p> 
       <p><b>Descripción:</b> {{ pedido.descripcion }}</p>
       <p><b>Anexos:</b> {{ pedido.anexos }}</p>
@@ -39,9 +39,22 @@
     </section>
 
     <div class="acciones">
-    <button (click)="irAtras()">Atras</button>
-    <button (click)="irAModificarPedido(pedido.id)">Modificar</button>
-  </div>
+    <app-button
+    label="Inicio"
+    actionType="inicio"
+    (buttonClick)="handleButtonClick($event)"
+    ></app-button>
+    <app-button
+    label="Atras"
+    actionType="atras"
+    (buttonClick)="handleButtonClick($event)"
+    ></app-button>
+    <app-button
+    label="Modificar"
+    actionType="modificar"
+    (buttonClick)="handleButtonClick($event)"
+    ></app-button>
+    </div>
 
   </div>
   

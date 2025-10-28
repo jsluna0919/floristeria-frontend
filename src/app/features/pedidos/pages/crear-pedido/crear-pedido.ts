@@ -12,7 +12,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-crear-pedido',
   imports: [
@@ -86,13 +85,13 @@ export class CrearPedido {
       next: res =>{
         console.log('Pedido creado', res)
         alert('✅ Pedido creado con éxito')
+        this.router.navigate(['/home'])
       },
       error: err =>{
         console.error(err);
         alert('❌ Error al crear el pedido');
       }
     });
-    this.router.navigate(['/home'])
   }
 
   volver(){
