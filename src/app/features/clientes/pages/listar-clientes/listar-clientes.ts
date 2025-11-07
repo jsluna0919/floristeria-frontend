@@ -19,6 +19,7 @@ export class ListarClientes implements OnInit{
   ngOnInit(): void {
       this.service.listarClientes().subscribe(resp => {this.clientes = resp.data})
   }
+  
 
   irACliente(tipoDoc: string, numDoc: string): void{
     this.router.navigate(['/clientes', tipoDoc,numDoc])

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ClienteService {
 
-  private apiUrl = 'http://localhost:8080/api/v1/clientes';
+  private apiUrl = 'https://floristeria-backend.onrender.com/api/v1/clientes';
 
   constructor(private http: HttpClient){}
 

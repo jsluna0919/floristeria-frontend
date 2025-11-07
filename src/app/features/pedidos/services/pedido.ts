@@ -11,7 +11,7 @@ import { CrearPedidoDTO } from '../models/crear-pedido';
 })
 export class PedidoService {
 
-  private apiUrl = 'http://localhost:8080/api/v1/pedidos';
+  private apiUrl = 'https://floristeria-backend.onrender.com/api/v1/pedidos';
 
   constructor(private http: HttpClient){}
 

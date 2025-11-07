@@ -9,13 +9,13 @@ import { DetalleCliente } from './features/clientes/pages/detalle-cliente/detall
 
 export const routes: Routes = [
   {path:'', redirectTo:'/home', pathMatch:'full'},
-  {path:'home', component:Home},
-  {path:'pedidos/listar', component: ListarPedidos},
-  {path:'pedidos/crear', component: CrearPedido},
-  {path:'pedidos/editar/:id', component: EditarPedido},
+  {path: 'home', component:Home},
+  {path: 'pedidos/listar', component: ListarPedidos},
+  {path: 'pedidos/crear', component: CrearPedido},
+  {path: 'pedidos/editar/:id', component: EditarPedido},
   {path: 'pedidos/:id', component: DetallePedido},
   {path: 'pedidos/modificar/:id', component: EditarPedido},
   {path: 'clientes/listar', component: ListarClientes},
-  {path: 'clientes/modificar/:tipoDocumento/:numeroDocumento/', component: DetalleCliente},
+  {path: 'clientes/:tipoDocumento/:numeroDocumento', component: DetalleCliente},
   {path:'**', redirectTo: '/home'}
 ];
