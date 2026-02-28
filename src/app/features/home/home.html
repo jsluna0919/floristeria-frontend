@@ -1,48 +1,60 @@
-<div class="main">
+<div class="flex h-screen bg-gray-50">
 
-  <div class="acciones">
+      <!-- SIDEBAR -->
+      <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
 
-    <h1>📋 Pedidos Pendientes</h1>
+        <!-- Logo -->
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex items-center gap-2">
+            <span class="text-3xl text-pink-600">
+                <mat-icon>local_florist</mat-icon>
+            </span>
+            <div>
+              <h1 class="font-semibold text-gray-900">Floristería</h1>
+              <p class="text-sm text-gray-500">Sistema de Gestión</p>
+            </div>
+          </div>
+        </div>
 
-    <app-button
-    label="Crear Pedido"
-    actionType="crearPedido"
-    (buttonClick)="handleButtonClick($event)"></app-button>
+        <!-- MENU DINÁMICO -->
+        <nav class="flex-1 p-4 space-y-1">
+          @for (item of filteredMenu(); track item.path) {
+            <a
+              [routerLink]="item.path"
+              routerLinkActive="bg-pink-50 text-pink-600"
+              class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition-colors">
+                <mat-icon>{{ item.icon }}</mat-icon>
 
-    <app-button
-    label="Listar Pedidos"
-    actionType="listarPedidos"
-    (buttonClick)="handleButtonClick($event)"></app-button>
+                <span>{{ item.label }}</span>
+            </a>
+          }
+        </nav>
 
-    <app-button
-    label="Listar Clientes"
-    actionType="listarClientes"
-    (buttonClick)="handleButtonClick($event)"></app-button>
-  </div>
+        <!-- USER + LOGOUT -->
+        <div class="p-4 border-t border-gray-200">
+          <div class="mb-3 px-4">
+            <p class="text-sm font-medium text-gray-900">
+              {{ auth.getName() }}
+            </p>
+            <p class="text-xs text-gray-500 capitalize">
+              {{ auth.getRole()}}
+            </p>
+          </div>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Cliente</th>
-          <th>Fecha de entrega</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
+          <app-button
+            (click)="logout()"
+            class="w-full justify-start gap-2 border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50">
+            <mat-icon>logout</mat-icon> 
+            Cerrar Sesión
+          </app-button>
 
-    <tbody>
-      @for (pedido of pedidosPendientes; track pedido.id) {
-        <tr (click)="handleButtonClick('irAPedido', pedido.id)" class="row-link">
-          <td>{{ pedido.id }}</td>
-          <td>{{ pedido.cliente.nombre }}</td>
-          <td>{{ pedido.fechaEntrega | date:'short'}}</td>
-          <td>{{ pedido.estado }}</td>
-        </tr>
-      }
-    
-    </tbody>
-  </table>
-  </div>
+        </div>
 
-</div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="flex-1 overflow-auto">
+        <router-outlet />
+      </main>
+
+    </div>

@@ -1,57 +1,40 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Pedido } from '../pedidos/models/pedido';
-import { PedidoService } from '../pedidos/services/pedido';
-import { Button } from "../../shared/button/button";
+import { Component, computed, inject} from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { Auth } from '../../core/services/auth';
+import { Button } from '../../shared/button/button';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, Button],
+  imports: [CommonModule, RouterModule, Button, MatIcon],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
-export class Home implements OnInit{
+export class Home{
 
-  pedidos: Pedido[] = []
-  pedidosPendientes: Pedido[] = []
+  auth = inject(Auth)
+  router = inject(Router)
 
-  constructor(
-    private router: Router,
-    private service: PedidoService
-  
-  ){}
+  private menuItems = [
+    { icon: 'assignment', label: 'Pedidos', path: '/pedidos', roles: ['ADMINISTRADOR', 'AUXILIAR', 'VENDEDOR'] },
+    { icon: 'assignment_ind', label: 'Clientes', path: '/clientes', roles: ['ADMINISTRADOR', 'AUXILIAR'] },
+    { icon: 'person_pin_circle', label: 'Destinatarios', path: '/destinatarios', roles: ['ADMINISTRADOR', 'AUXILIAR'] },
+    { icon: 'insert_chart_outlined', label: 'Reportes', path: '/reportes', roles: ['ADMINISTRADOR'] },
+    { icon: 'person', label: 'Usuarios', path: '/usuarios', roles: ['ADMINISTRADOR'] }
+  ];
+ 
+  filteredMenu = computed(() => {
+    const rol = this.auth.getRole()
+    if (!rol) return [];
 
-  ngOnInit(): void {
-      this.service.listarPedido().subscribe(res => {
-        this.pedidos = res.data;
-        //1. Filtrar solo pedidos pendientes
-        this.pedidosPendientes = this.pedidos.filter(p => p.estado === "PENDIENTE");
-        //2. Ordenar por fecha de entrega ascendente
-        this.pedidosPendientes.sort((a, b) =>{
-          return new Date(a.fechaEntrega).getTime() - new Date(b.fechaEntrega).getTime()
-        })
-      })
-  }
+    return this.menuItems.filter(item =>
+      item.roles.includes(rol)
+    );
+  });
 
-  handleButtonClick(action: string, id?:any): void{
-    switch(action){
-
-      case 'listarPedidos':
-        this.router.navigate(['/pedidos/listar'])
-        break
-
-      case 'crearPedido':
-        this.router.navigate(['pedidos/crear'])
-        break
-
-      case 'listarClientes':
-        this.router.navigate(['/clientes/listar'])
-        break
-      
-      case 'irAPedido':
-        this.router.navigate(['/pedidos', id])
-    }
-
+  logout(){
+    this.auth.logout()
+    this.router.navigate(['/login'])
   }
 }
