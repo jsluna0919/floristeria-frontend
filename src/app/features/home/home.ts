@@ -17,11 +17,11 @@ export class Home{
   router = inject(Router)
 
   private menuItems = [
-    { icon: 'assignment', label: 'Pedidos', path: '/pedidos', roles: ['ADMINISTRADOR', 'AUXILIAR', 'VENDEDOR'] },
-    { icon: 'assignment_ind', label: 'Clientes', path: '/clientes', roles: ['ADMINISTRADOR', 'AUXILIAR'] },
-    { icon: 'person_pin_circle', label: 'Destinatarios', path: '/destinatarios', roles: ['ADMINISTRADOR', 'AUXILIAR'] },
-    { icon: 'insert_chart_outlined', label: 'Reportes', path: '/reportes', roles: ['ADMINISTRADOR'] },
-    { icon: 'person', label: 'Usuarios', path: '/usuarios', roles: ['ADMINISTRADOR'] }
+    { icon: 'assignment', label: 'Pedidos', path: '/home/pedidos', roles: ['ADMINISTRADOR', 'AUXILIAR', 'VENDEDOR'] },
+    { icon: 'assignment_ind', label: 'Clientes', path: '/home/clientes', roles: ['ADMINISTRADOR', 'AUXILIAR'] },
+    { icon: 'person_pin_circle', label: 'Destinatarios', path: '/home/destinatarios', roles: ['ADMINISTRADOR', 'AUXILIAR'] },
+    { icon: 'insert_chart_outlined', label: 'Reportes', path: '/home/reportes', roles: ['ADMINISTRADOR'] },
+    { icon: 'person', label: 'Usuarios', path: '/home/usuarios', roles: ['ADMINISTRADOR'] }
   ];
  
   filteredMenu = computed(() => {

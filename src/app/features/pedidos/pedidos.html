@@ -1,0 +1,47 @@
+<h2>Pedidos ({{totalPedidos}})</h2>
+
+<table border="1">
+
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Cliente</th>
+      <th>Destinatario</th>
+      <th>Arreglo</th>
+      <th>Total</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let pedido of pedidos">
+
+      <td>{{pedido.id}}</td>
+
+      <td>
+        {{pedido.cliente.nombre}}
+        {{pedido.cliente.apellido}}
+      </td>
+
+      <td>
+        {{pedido.destinatario.nombre}}
+      </td>
+
+      <td>
+        {{pedido.arregloFloral}}
+      </td>
+
+      <td>
+        {{ pedido.total | currency:'COP':'symbol-narrow':'1.0-0' }}
+      </td>
+
+      <td>
+        {{pedido.estadoPedido}}
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
