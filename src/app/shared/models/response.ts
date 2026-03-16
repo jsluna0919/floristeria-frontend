@@ -1,9 +1,11 @@
 export interface PageResponse<T> {
     content: T[];
-    page: {
-        size: number;
-        number: number;
-        totalElements: number;
-        totalPages: number;
-    };
+    page: PageInfo
+}
+
+export interface PageInfo {
+    size: number;
+    number: number;
+    totalElements: number;
+    totalPages: number;
 }

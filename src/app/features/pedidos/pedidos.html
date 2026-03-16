@@ -1,47 +1,105 @@
-<h2>Pedidos ({{totalPedidos}})</h2>
+<h1>Pedidos</h1>
 
-<table border="1">
+  <!-- filtros -->
 
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Cliente</th>
-      <th>Destinatario</th>
-      <th>Arreglo</th>
-      <th>Total</th>
-      <th>Estado</th>
-    </tr>
-  </thead>
+  <mat-card class="mb-6">
 
-  <tbody>
+    <div class="flex gap-4">
 
-    <tr *ngFor="let pedido of pedidos">
+      <mat-form-field appearance="outline" class="flex-1">
 
-      <td>{{pedido.id}}</td>
+        <mat-label>Buscar pedido</mat-label>
 
-      <td>
-        {{pedido.cliente.nombre}}
-        {{pedido.cliente.apellido}}
-      </td>
+        <input
+          matInput
+          [(ngModel)]="searchTerm"
+          placeholder="Número de pedido">
 
-      <td>
-        {{pedido.destinatario.nombre}}
-      </td>
+        <mat-icon matSuffix>search</mat-icon>
 
-      <td>
-        {{pedido.arregloFloral}}
-      </td>
+      </mat-form-field>
 
-      <td>
-        {{ pedido.total | currency:'COP':'symbol-narrow':'1.0-0' }}
-      </td>
+      <mat-form-field appearance="outline">
 
-      <td>
-        {{pedido.estadoPedido}}
-      </td>
+        <mat-label>Estado</mat-label>
 
-    </tr>
+        <mat-select [(ngModel)]="estadoFilter">
 
-  </tbody>
+          <mat-option value="todos">Todos</mat-option>
+          <mat-option value="pendiente">Pendiente</mat-option>
+          <mat-option value="en_proceso">En proceso</mat-option>
+          <mat-option value="completado">Completado</mat-option>
+          <mat-option value="entregado">Entregado</mat-option>
+          <mat-option value="cancelado">Cancelado</mat-option>
 
-</table>
+        </mat-select>
+
+      </mat-form-field>
+
+    </div>
+
+  </mat-card>
+
+@for (pedido of pedidos; track $index) {
+<mat-card style="margin-bottom:16px" class="pedido-card">
+
+  <mat-card-header>
+
+    <mat-card-title>
+      Pedido # {{pedido.id}}
+    </mat-card-title>
+
+    @if (pedido.estadoPedido === 'PENDIENTE') {
+    <mat-chip>
+      Pendiente
+    </mat-chip>
+    }
+
+    @if (pedido.estadoPedido === 'EN_PROCESO') {
+    <mat-chip>
+      En proceso
+    </mat-chip>
+    }
+
+    <span style="margin-left:auto;font-weight:bold">
+      {{pedido.total | currency:'COP':'symbol-narrow':'1.0-0'}}
+    </span>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <p>
+      <strong>Arreglo Floral:</strong>
+      {{pedido.arregloFloral}}
+    </p>
+    <p>
+      <strong>Cliente:</strong>
+      {{pedido.cliente.nombre}} {{pedido.cliente.apellido}}
+    </p>
+
+    <p>
+      <strong>Destinatario:</strong>
+      {{pedido.destinatario.nombre}}
+    </p>
+
+    <p>
+      <mat-icon>calendar_today</mat-icon>
+      {{pedido.fechaEntrega | date: 'mediumDate'}}
+
+      <mat-icon>schedule</mat-icon>
+      {{pedido.fechaEntrega | date: 'hh:mm a'}}
+    </p>
+
+    <mat-divider></mat-divider>
+
+    @if (pedido.observaciones) {
+    <p>
+      <strong>Notas:</strong>
+      {{pedido.observaciones}}
+    </p>
+    }
+  </mat-card-content>
+
+</mat-card>
+}
